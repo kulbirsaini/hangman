@@ -1,0 +1,28 @@
+<%= render partial: 'notice' %>
+<h1 class="text-center">All Games</h1>
+
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Word</th>
+      <th>Tries left</th>
+      <th>Guessed chars</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= game.current_word %></td>
+        <td><%= game.tries_left %></td>
+        <td><%= game.guessed_chars %></td>
+        <td><%= game.status %></td>
+        <td><%= link_to game.busy? ? 'Play' : 'Show', game_path(game, format: :html) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Game', games_path(format: :html), method: :post, class: 'btn btn-success' %>

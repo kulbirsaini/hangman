@@ -1,0 +1,29 @@
+<%= render partial: 'notice' %>
+<h1 class="text-center">Game #<%= @game.id %></h1>
+<p>
+  <strong>Word: </strong>
+  <span class="spaced-letters"><%= @current_word %></span>
+</p>
+
+<p>
+  <strong>Tries left: </strong>
+  <%= @game.tries_left %>
+</p>
+
+<p>
+  <strong>Guesses: </strong>
+  <span class="spaced-letters"><%= @game.guessed_chars %></span>
+</p>
+
+<p>
+  <strong>Status</strong>
+  <%= @game.status %>
+</p>
+
+<%= form_for(@game, url: game_path(@game, format: :html), html: { method: :post }) do |f| %>
+  <% ('a'..'z').to_a.each do |char| %>
+    <%= f.button(type: 'submit', name: 'game[char]', value: char, disabled: button_disabled?(@game, char), class: "btn btn-#{get_button_type(@game, @current_word, char)}"){ content_tag(:span, char.upcase) } %>
+  <% end %>
+<% end %>
+
+<%= link_to 'Back', games_path(format: :html), class: 'btn btn-success' %>

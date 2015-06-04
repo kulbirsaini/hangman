@@ -1,0 +1,10 @@
+default: &default
+  max_tries: 11
+  words_file: 'db/data/words.txt'
+
+development:
+  <<: *default
+  max_tries: 6
+
+production:
+  <<: *default
