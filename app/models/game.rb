@@ -1,10 +1,10 @@
 class Game < ActiveRecord::Base
   before_validation :set_defaults, on: :create
 
-  validates :word, presence: true, format: { with: /[a-z]/, message: 'should contain only lowercase alphabets' }
-  validates :guessed_chars, format: { with: /[a-z]/, message: 'should contain only lowercase alphabets' }, if: "guessed_chars.present?"
+  validates :word, presence: true, format: { with: /\A[a-z]+\z/, message: 'should contain only lowercase alphabets' }
+  validates :guessed_chars, format: { with: /\A[a-z]+\z/, message: 'should contain only lowercase alphabets' }, if: "guessed_chars.present?"
   validates :tries_left, presence: true, numericality: { only_integer: true, greater_than: -1, less_than_or_equal_to: Rails.application.config.x.max_tries }
-  validates :status, inclusion: { in: ['busy', 'fail', 'success'] }, if: "status.present?"
+  validates :status, inclusion: { in: ['busy', 'fail', 'success'] }
 
   def busy?
     status == 'busy'

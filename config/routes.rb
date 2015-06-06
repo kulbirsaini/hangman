@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   match '*path', to: 'application#options_request', via: [ :options ]
+  match '/', to: 'application#options_request', via: [ :options ]
   root to: 'games#index'
   resources :games, only: [:index, :create, :show], defaults: { format: :json }
   post 'games/:id', to: 'games#guess', defaults: { format: :json }
