@@ -4,13 +4,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format == 'application/json' }
   before_action :set_access_control_headers
 
+  def options_request
+    head(:ok)
+  end
+
   private
 
   def set_access_control_headers
     response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, PATCH, DELETE, OPTIONS'
-    response.headers['Access-Control-Allow-Credentials'] = 'true'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
     response.headers['Access-Control-Request-Method'] = '*'
-    response.headers['Access-Control-Allow-Headers'] = 'Origin, X-Access-Email, X-Access-Token, X-Access-Reset-Password-Token, X-Access-Confirmation-Token, X-Access-Unlock-Token, Content-Type, Accept, Accept-Language'
+    response.headers['Access-Control-Allow-Headers'] = 'Origin, Content-Type, Accept'
   end
 end

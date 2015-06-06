@@ -11,7 +11,7 @@ Implementation of [Hangman](http://en.wikipedia.org/wiki/Hangman_%28game%29) for
 ```bash
 curl -H 'Content-Type: application/json' \
      -w '\nResponse Code: %{http_code}\n' \
-     -X GET http://localhost:8000/games.json
+     -X GET http://yd9.net/games.json
 ```
 
 ###### Response
@@ -24,7 +24,7 @@ curl -H 'Content-Type: application/json' \
       "guessed_chars":"jldgnykihf",
       "status":"fail",
       "word":"diyarbakir",
-      "url":"http://localhost:8000/games/1.json"
+      "url":"http://yd9.net/games/1.json"
     },
     {
       "id":2,
@@ -32,7 +32,7 @@ curl -H 'Content-Type: application/json' \
       "guessed_chars":"eurnlkiab",
       "status":"success",
       "word":"unlikable",
-      "url":"http://localhost:8000/games/2.json"
+      "url":"http://yd9.net/games/2.json"
     },
     {
       "id":6,
@@ -40,7 +40,7 @@ curl -H 'Content-Type: application/json' \
       "guessed_chars":"jpei",
       "status":"busy",
       "word":"...i.e..",
-      "url":"http://localhost:8000/games/6.json"
+      "url":"http://yd9.net/games/6.json"
     },
     ...
   ]
@@ -55,7 +55,7 @@ curl -H 'Content-Type: application/json' \
 curl -H 'Content-Type: application/json' \
      -d '' \
      -w '\nResponse Code: %{http_code}\n' \
-     -X POST http://localhost:8000/games.json
+     -X POST http://yd9.net/games.json
 ```
 
 ###### Response
@@ -67,7 +67,7 @@ curl -H 'Content-Type: application/json' \
     "guessed_chars":"",
     "status":"busy",
     "word":".........",
-    "url":"http://localhost:8000/games/12.json"
+    "url":"http://yd9.net/games/12.json"
   }
   Response Code: 201
 ```
@@ -79,7 +79,7 @@ curl -H 'Content-Type: application/json' \
 ```bash
 curl -H 'Content-Type: application/json' \
      -w '\nResponse Code: %{http_code}\n' \
-     -X GET http://localhost:8000/games/2.json
+     -X GET http://yd9.net/games/2.json
 ```
 
 ###### Response
@@ -91,7 +91,7 @@ curl -H 'Content-Type: application/json' \
     "guessed_chars":"eurnlkiab",
     "status":"success",
     "word":"unlikable",
-    "url":"http://localhost:8000/games/2.json"
+    "url":"http://yd9.net/games/2.json"
   }
   Response Code: 200
 ```
@@ -104,7 +104,7 @@ curl -H 'Content-Type: application/json' \
 curl -H 'Content-Type: application/json' \
      -d '{"game": { "char": "a" } }' \
      -w '\nResponse Code: %{http_code}\n' \
-     -X POST http://localhost:8000/games/10.json
+     -X POST http://yd9.net/games/10.json
 ```
 
 ###### Response
@@ -117,7 +117,7 @@ curl -H 'Content-Type: application/json' \
     "status":"busy",
     "word":"...e...ee.",
     "guess_status":"correct",
-    "url":"http://localhost:8000/games/10.json"
+    "url":"http://yd9.net/games/10.json"
   }
   Response Code: 200
 ```
